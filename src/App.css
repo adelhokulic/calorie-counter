@@ -1,0 +1,199 @@
+:root {
+	--background: #f3f5f7;
+	--surface: #ffffff;
+	--text: #1f2933;
+	--muted: #616e7c;
+	--border: #d9dfe5;
+	--primary: #2f7d4f;
+	--primary-hover: #26653f;
+	--danger: #c62828;
+	--soft: #f7f9fa;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--background);
+	color: var(--text);
+}
+
+/* Glavna kartica: cijela aplikacija je unutar #root */
+#root {
+	max-width: 560px;
+	margin: 16px;
+	padding: 20px 16px;
+	background: var(--surface);
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(31, 41, 51, 0.08);
+}
+
+h1 {
+	margin: 0 0 20px;
+	font-size: 22px;
+	line-height: 1.3;
+}
+
+h2 {
+	margin: 24px 0 12px;
+	padding-top: 20px;
+	border-top: 1px solid var(--border);
+	font-size: 18px;
+}
+
+p {
+	margin: 0 0 8px;
+}
+
+/* Polja i dugmad */
+input,
+select,
+button {
+	width: 100%;
+	min-width: 0;
+	padding: 10px 12px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--text);
+	font: inherit;
+	font-size: 16px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 1px;
+}
+
+button {
+	border-color: var(--primary);
+	background: var(--primary);
+	color: #ffffff;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+button:hover {
+	background: var(--primary-hover);
+}
+
+/* Forma za dnevni cilj (odmah poslije h1) */
+h1 + form label {
+	display: block;
+	margin-bottom: 6px;
+	color: var(--muted);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/* Forma za obrok (odmah poslije h2) */
+h2 + form {
+	display: grid;
+	gap: 10px;
+}
+
+/* Poruka o gresci ispod forme */
+form + p {
+	margin: 10px 0 0;
+	color: var(--danger);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/* Lista obroka */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 0;
+	border-bottom: 1px solid var(--border);
+	overflow-wrap: anywhere;
+}
+
+li:last-child {
+	border-bottom: 0;
+}
+
+li button {
+	flex-shrink: 0;
+	width: auto;
+	padding: 6px 12px;
+	border-color: var(--danger);
+	background: var(--surface);
+	color: var(--danger);
+	font-size: 14px;
+}
+
+li button:hover {
+	background: var(--danger);
+	color: #ffffff;
+}
+
+/* Remaining: boja dolazi iz komponente, ovdje samo isticanje */
+p[style] {
+	font-weight: 700;
+}
+
+/* Zbir po vrsti obroka */
+#root > div:has(> p) {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+	margin-top: 14px;
+}
+
+#root > div p {
+	margin: 0;
+	padding: 10px 12px;
+	border-radius: 8px;
+	background: var(--soft);
+	font-size: 14px;
+}
+
+/* Dugme New day */
+#root > button {
+	margin-top: 20px;
+	border-color: var(--border);
+	background: var(--soft);
+	color: var(--text);
+}
+
+#root > button:hover {
+	background: var(--border);
+}
+
+/* Sire ekrane */
+@media (min-width: 600px) {
+	#root {
+		margin: 40px auto;
+		padding: 28px;
+	}
+
+	h1 {
+		font-size: 26px;
+	}
+
+	h2 + form {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	h2 + form input[type="text"],
+	h2 + form button {
+		grid-column: 1 / -1;
+	}
+
+	#root > div:has(> p) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
