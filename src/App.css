@@ -215,6 +215,10 @@ body {
 	font-size: 14px;
 }
 
+.macro-totals {
+	grid-template-columns: repeat(3, 1fr);
+}
+
 /* Siri ekrani */
 @media (min-width: 600px) {
 	#root {
@@ -236,5 +240,9 @@ body {
 
 	.type-totals {
 		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.macro-totals {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
