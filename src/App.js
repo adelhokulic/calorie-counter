@@ -11,6 +11,9 @@ function App() {
 	const addMeal = (newMeal) => {
 		setMeals((oldMeals) => [...oldMeals, newMeal]);
 	};
+	const deleteMeal = (id) => {
+		setMeals(meals.filter((meal) => meal.id !== id));
+	};
 	return (
 		<>
 			<h1>Calorie Counter – Track Your Daily Intake</h1>
@@ -25,7 +28,7 @@ function App() {
 				<p>Number of meals: {meals.length}</p>
 			</form>
 			<MealForm onAddMeal={addMeal} />
-			<MealList />
+			<MealList meals={meals} onDeleteMeal={deleteMeal} />
 			<CalorieCounter />
 		</>
 	);
