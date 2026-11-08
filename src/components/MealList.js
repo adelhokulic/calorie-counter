@@ -3,7 +3,7 @@ const MealList = ({ meals, onDeleteMeal }) => {
 	return (
 		<>
 			<h2>Your Meals</h2>
-			{meals.lenth === 0 ? (
+			{meals.length === 0 ? (
 				<p>No meals yet</p>
 			) : (
 				<ul>

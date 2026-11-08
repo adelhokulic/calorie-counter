@@ -29,7 +29,7 @@ function App() {
 			</form>
 			<MealForm onAddMeal={addMeal} />
 			<MealList meals={meals} onDeleteMeal={deleteMeal} />
-			<CalorieCounter />
+			<CalorieCounter goal={goal} meals={meals}/>
 		</>
 	);
 }
