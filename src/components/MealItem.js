@@ -1,8 +1,8 @@
 const MealItem = ({meal, onDeleteMeal}) => {
 	return (
-		<li>
+		<li className="meal-item">
 				{meal.name}, {meal.calories} kcal, {meal.type}
-				<button onClick={() => onDeleteMeal(meal.id)}>Delete</button>
+				<button className="button button-danger" onClick={() => onDeleteMeal(meal.id)}>Delete</button>
 		</li>
 	);
 };

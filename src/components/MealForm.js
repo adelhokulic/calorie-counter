@@ -32,21 +32,23 @@ const MealForm = ({ onAddMeal }) => {
 	};
 	return (
 		<>
-			<h2>Insert your meal</h2>
-			<form onSubmit={insertMeal}>
+			<h2 className="section-title">Insert your meal</h2>
+			<form className="meal-form" onSubmit={insertMeal}>
 				<input
+					className="field meal-form-wide"
 					type="text"
 					value={name}
 					placeholder="Name"
 					onChange={(e) => setName(e.target.value)}
 				/>
 				<input
+					className="field"
 					type="number"
 					value={calories}
 					placeholder="Calories"
 					onChange={(e) => setCalories(e.target.value)}
 				/>
-				<select value={mealType} onChange={(e) => setMealType(e.target.value)}>
+				<select className="field" value={mealType} onChange={(e) => setMealType(e.target.value)}>
 					{typesOfMeal.map((type) => {
 						return (
 							<option key={type} value={type}>
@@ -55,9 +57,9 @@ const MealForm = ({ onAddMeal }) => {
 						);
 					})}
 				</select>
-				<button type="submit">Add meal</button>
+				<button className="button meal-form-wide" type="submit">Add meal</button>
 			</form>
-			{errorMessage && <p>{errorMessage}</p>}
+			{errorMessage && <p className="form-error">{errorMessage}</p>}
 		</>
 	);
 };

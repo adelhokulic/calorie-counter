@@ -16,10 +16,11 @@ function App() {
 	};
 	return (
 		<>
-			<h1>Calorie Counter – Track Your Daily Intake</h1>
+			<h1 className="app-title">Calorie Counter – Track Your Daily Intake</h1>
 			<form onSubmit={(e) => e.preventDefault()}>
-				<label>Daily goal</label>
+				<label className="field-label">Daily goal</label>
 				<input
+					className="field"
 					type="number"
 					value={goal === 0 ? "" : goal}
 					onChange={(e) => setGoal(Number(e.target.value))}
@@ -29,7 +30,7 @@ function App() {
 			<MealForm onAddMeal={addMeal} />
 			<MealList meals={meals} onDeleteMeal={deleteMeal} />
 			<CalorieCounter goal={goal} meals={meals} />
-			<button onClick={e => setMeals([])}>New day</button>
+			<button className="button button-secondary" onClick={e => setMeals([])}>New day</button>
 		</>
 	);
 }

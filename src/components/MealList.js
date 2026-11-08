@@ -2,11 +2,11 @@ import MealItem from "./MealItem";
 const MealList = ({ meals, onDeleteMeal }) => {
 	return (
 		<>
-			<h2>Your Meals</h2>
+			<h2 className="section-title">Your Meals</h2>
 			{meals.length === 0 ? (
-				<p>No meals yet</p>
+				<p className="empty-text">No meals yet</p>
 			) : (
-				<ul>
+				<ul className="meal-list">
 					{meals.map((meal) => {
 						return (
 							<MealItem key={meal.id} meal={meal} onDeleteMeal={onDeleteMeal} />

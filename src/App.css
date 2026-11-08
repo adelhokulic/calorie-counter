@@ -29,27 +29,30 @@ body {
 	box-shadow: 0 2px 12px rgba(31, 41, 51, 0.08);
 }
 
-h1 {
+/* Naslovi */
+.app-title {
 	margin: 0 0 20px;
 	font-size: 22px;
 	line-height: 1.3;
 }
 
-h2 {
+.section-title {
 	margin: 24px 0 12px;
 	padding-top: 20px;
 	border-top: 1px solid var(--border);
 	font-size: 18px;
 }
 
-p {
-	margin: 0 0 8px;
+/* Polja */
+.field-label {
+	display: block;
+	margin-bottom: 6px;
+	color: var(--muted);
+	font-size: 14px;
+	font-weight: 600;
 }
 
-/* Polja i dugmad */
-input,
-select,
-button {
+.field {
 	width: 100%;
 	min-width: 0;
 	padding: 10px 12px;
@@ -61,71 +64,26 @@ button {
 	font-size: 16px;
 }
 
-input:focus-visible,
-select:focus-visible,
-button:focus-visible {
-	outline: 2px solid var(--primary);
-	outline-offset: 1px;
-}
-
-button {
-	border-color: var(--primary);
+/* Dugmad */
+.button {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid var(--primary);
+	border-radius: 8px;
 	background: var(--primary);
 	color: #ffffff;
+	font: inherit;
+	font-size: 16px;
 	font-weight: 600;
 	cursor: pointer;
-	transition: background-color 0.15s;
+	transition: background-color 0.15s, color 0.15s;
 }
 
-button:hover {
+.button:hover {
 	background: var(--primary-hover);
 }
 
-/* Forma za dnevni cilj (odmah poslije h1) */
-h1 + form label {
-	display: block;
-	margin-bottom: 6px;
-	color: var(--muted);
-	font-size: 14px;
-	font-weight: 600;
-}
-
-/* Forma za obrok (odmah poslije h2) */
-h2 + form {
-	display: grid;
-	gap: 10px;
-}
-
-/* Poruka o gresci ispod forme */
-form + p {
-	margin: 10px 0 0;
-	color: var(--danger);
-	font-size: 14px;
-	font-weight: 600;
-}
-
-/* Lista obroka */
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-li {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 12px;
-	padding: 10px 0;
-	border-bottom: 1px solid var(--border);
-	overflow-wrap: anywhere;
-}
-
-li:last-child {
-	border-bottom: 0;
-}
-
-li button {
+.button-danger {
 	flex-shrink: 0;
 	width: auto;
 	padding: 6px 12px;
@@ -135,25 +93,100 @@ li button {
 	font-size: 14px;
 }
 
-li button:hover {
+.button-danger:hover {
 	background: var(--danger);
 	color: #ffffff;
 }
 
-/* Remaining: boja dolazi iz komponente, ovdje samo isticanje */
-p[style] {
+.button-secondary {
+	margin-top: 20px;
+	border-color: var(--border);
+	background: var(--soft);
+	color: var(--text);
+}
+
+.button-secondary:hover {
+	background: var(--border);
+}
+
+.field:focus-visible,
+.button:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 1px;
+}
+
+/* Forma za obrok */
+.meal-form {
+	display: grid;
+	gap: 10px;
+}
+
+.form-error {
+	margin: 10px 0 0;
+	color: var(--danger);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/* Lista obroka */
+.empty-text {
+	margin: 0;
+	color: var(--muted);
+}
+
+.meal-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.meal-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 0;
+	border-bottom: 1px solid var(--border);
+	overflow-wrap: anywhere;
+}
+
+.meal-item:last-child {
+	border-bottom: 0;
+}
+
+/* Pregled */
+.stat {
+	margin: 0 0 8px;
+}
+
+/* Boja za Remaining dolazi iz komponente, ovdje je samo isticanje */
+.stat-remaining {
 	font-weight: 700;
 }
 
-/* Zbir po vrsti obroka */
-#root > div:has(> p) {
+.progress {
+	height: 12px;
+	margin-top: 4px;
+	overflow: hidden;
+	border-radius: 999px;
+	background: var(--border);
+}
+
+.progress-fill {
+	height: 100%;
+	border-radius: 999px;
+	background: var(--primary);
+	transition: width 0.25s;
+}
+
+.type-totals {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 8px;
 	margin-top: 14px;
 }
 
-#root > div p {
+.type-total {
 	margin: 0;
 	padding: 10px 12px;
 	border-radius: 8px;
@@ -161,39 +194,26 @@ p[style] {
 	font-size: 14px;
 }
 
-/* Dugme New day */
-#root > button {
-	margin-top: 20px;
-	border-color: var(--border);
-	background: var(--soft);
-	color: var(--text);
-}
-
-#root > button:hover {
-	background: var(--border);
-}
-
-/* Sire ekrane */
+/* Siri ekrani */
 @media (min-width: 600px) {
 	#root {
 		margin: 40px auto;
 		padding: 28px;
 	}
 
-	h1 {
+	.app-title {
 		font-size: 26px;
 	}
 
-	h2 + form {
+	.meal-form {
 		grid-template-columns: 1fr 1fr;
 	}
 
-	h2 + form input[type="text"],
-	h2 + form button {
+	.meal-form-wide {
 		grid-column: 1 / -1;
 	}
 
-	#root > div:has(> p) {
+	.type-totals {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }

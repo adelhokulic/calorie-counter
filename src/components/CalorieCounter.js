@@ -10,17 +10,17 @@ const CalorieCounter = ({ goal, meals }) => {
 	};
 	return (
 		<>
-			<h2>CalorieCounter</h2>
-			<p>Eaten: {calorieSum}</p>
-			<p style={{ color: calorieSum > goal ? "red" : "black" }}>
+			<h2 className="section-title">CalorieCounter</h2>
+			<p className="stat">Eaten: {calorieSum}</p>
+			<p className="stat stat-remaining" style={{ color: calorieSum > goal ? "red" : "black" }}>
 				Remaining: {remaining}
 			</p>
-			<p>Percent: {percent} %</p>
-			<div>
-				<p>Breakfast: {sumByType("Breakfast")}</p>
-				<p>Lunch: {sumByType("Lunch")}</p>
-				<p>Dinner: {sumByType("Dinner")}</p>
-				<p>Snack: {sumByType("Snack")}</p>
+			<p className="stat">Percent: {percent} %</p>
+			<div className="type-totals">
+				<p className="type-total">Breakfast: {sumByType("Breakfast")}</p>
+				<p className="type-total">Lunch: {sumByType("Lunch")}</p>
+				<p className="type-total">Dinner: {sumByType("Dinner")}</p>
+				<p className="type-total">Snack: {sumByType("Snack")}</p>
 			</div>
 		</>
 	);
