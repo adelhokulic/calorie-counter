@@ -8,6 +8,9 @@ function App() {
 	const [goal, setGoal] = useState(2000);
 	const [meals, setMeals] = useState([]);
 
+	const addMeal = (newMeal) => {
+		setMeals((oldMeals) => [...oldMeals, newMeal]);
+	};
 	return (
 		<>
 			<h1>Calorie Counter – Track Your Daily Intake</h1>
@@ -21,7 +24,7 @@ function App() {
 				<p>Today's goal: {goal}</p>
 				<p>Number of meals: {meals.length}</p>
 			</form>
-			<MealForm />
+			<MealForm onAddMeal={addMeal} />
 			<MealList />
 			<CalorieCounter />
 		</>

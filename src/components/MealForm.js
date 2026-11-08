@@ -1,14 +1,34 @@
 import { useState } from "react";
 
-const MealForm = () => {
+const MealForm = ({ onAddMeal }) => {
 	const typesOfMeal = ["Breakfast", "Lunch", "Dinner", "Snack"];
 	const [name, setName] = useState("");
-	const [calorie, setCalorie] = useState("");
+	const [calories, setCalories] = useState("");
 	const [mealType, setMealType] = useState("Breakfast");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const insertMeal = (e) => {
 		e.preventDefault();
-		console.log(name, calorie, mealType);
+
+		if (name.trim() === "") {
+			setErrorMessage("Please insert name");
+			return;
+		}
+		if (Number(calories) <= 0) {
+			setErrorMessage("Calories must be greater than 0.");
+			return;
+		}
+		const meal = {
+			id: Date.now(),
+			name: name.trim(),
+			calories: Number(calories),
+			type: mealType,
+		};
+		onAddMeal(meal);
+		setName("");
+		setCalories("");
+		setMealType("Breakfast");
+		setErrorMessage("");
 	};
 	return (
 		<>
@@ -22,9 +42,9 @@ const MealForm = () => {
 				/>
 				<input
 					type="number"
-					value={calorie}
+					value={calories}
 					placeholder="Calories"
-					onChange={(e) => setCalorie(e.target.value)}
+					onChange={(e) => setCalories(e.target.value)}
 				/>
 				<select value={mealType} onChange={(e) => setMealType(e.target.value)}>
 					{typesOfMeal.map((type) => {
@@ -37,6 +57,7 @@ const MealForm = () => {
 				</select>
 				<button type="submit">Add meal</button>
 			</form>
+			{errorMessage && <p>{errorMessage}</p>}
 		</>
 	);
 };
