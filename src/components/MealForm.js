@@ -24,7 +24,7 @@ const MealForm = ({ onAddMeal }) => {
 		}
 
 		if (protein < 0 || carbs < 0 || fat < 0) {
-			setErrorMessage("You have to insert macronutrients")
+			setErrorMessage("Macronutrients cannot be negative");
 			return;
 		}
 		const meal = {

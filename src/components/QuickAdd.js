@@ -17,6 +17,14 @@ const QuickAdd = ({ onAddMeal }) => {
 			type: "Breakfast",
 		},
 		{
+			name: "Rice",
+			calories: 130,
+			protein: 2.7,
+			carbs: 28,
+			fat: 0.3,
+			type: "Lunch",
+		},
+		{
 			name: "Banana",
 			calories: 89,
 			protein: 1.1,
@@ -41,6 +49,14 @@ const QuickAdd = ({ onAddMeal }) => {
 			type: "Breakfast",
 		},
 		{
+			name: "Almonds",
+			calories: 579,
+			protein: 21,
+			carbs: 22,
+			fat: 50,
+			type: "Snack",
+		},
+		{
 			name: "Chicken Breast",
 			calories: 165,
 			protein: 31,
@@ -48,14 +64,7 @@ const QuickAdd = ({ onAddMeal }) => {
 			fat: 3.6,
 			type: "Lunch",
 		},
-		{
-			name: "Rice",
-			calories: 130,
-			protein: 2.7,
-			carbs: 28,
-			fat: 0.3,
-			type: "Lunch",
-		},
+
 		{
 			name: "Salmon",
 			calories: 208,
@@ -71,14 +80,6 @@ const QuickAdd = ({ onAddMeal }) => {
 			carbs: 7,
 			fat: 0.4,
 			type: "Dinner",
-		},
-		{
-			name: "Almonds",
-			calories: 579,
-			protein: 21,
-			carbs: 22,
-			fat: 50,
-			type: "Snack",
 		},
 	];
 
