@@ -1,6 +1,7 @@
 import "./App.css";
 import MealForm from "./components/MealForm";
 import MealList from "./components/MealList";
+import QuickAdd from "./components/QuickAdd";
 import CalorieCounter from "./components/CalorieCounter";
 import { useState } from "react";
 
@@ -28,9 +29,12 @@ function App() {
 				/>
 			</form>
 			<MealForm onAddMeal={addMeal} />
+			<QuickAdd onAddMeal={addMeal} />
 			<MealList meals={meals} onDeleteMeal={deleteMeal} />
 			<CalorieCounter goal={goal} meals={meals} />
-			<button className="button button-secondary" onClick={e => setMeals([])}>New day</button>
+			<button className="button button-secondary" onClick={(e) => setMeals([])}>
+				New day
+			</button>
 		</>
 	);
 }
