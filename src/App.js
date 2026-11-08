@@ -18,18 +18,18 @@ function App() {
 		<>
 			<h1>Calorie Counter – Track Your Daily Intake</h1>
 			<form onSubmit={(e) => e.preventDefault()}>
+				<label>Daily goal</label>
 				<input
 					type="number"
-					value={goal}
+					value={goal === 0 ? "" : goal}
 					onChange={(e) => setGoal(Number(e.target.value))}
 					placeholder="Type today's calorie goal..."
 				/>
-				<p>Today's goal: {goal}</p>
-				<p>Number of meals: {meals.length}</p>
 			</form>
 			<MealForm onAddMeal={addMeal} />
 			<MealList meals={meals} onDeleteMeal={deleteMeal} />
-			<CalorieCounter goal={goal} meals={meals}/>
+			<CalorieCounter goal={goal} meals={meals} />
+			<button onClick={e => setMeals([])}>New day</button>
 		</>
 	);
 }
