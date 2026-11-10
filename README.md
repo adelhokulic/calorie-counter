@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Calorie Counter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React app for tracking daily food intake. Set a calorie goal, log meals with their macronutrients, and see your progress update instantly.
 
-## Available Scripts
+Built as a project in the ITMentorstva frontend mentorship program.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Daily goal:** defaults to 2000 kcal, and changing it immediately updates every total
+- **Meal logging:** name, calories, meal type, and optional protein, carbs, and fat
+- **Form validation:** clear error messages for an empty name, calories of 0 or less, and negative macronutrients
+- **Quick add:** one-click buttons for 10 common foods
+- **Daily summary:** calories eaten, calories remaining, and percentage of the goal
+- **Progress bar:** stays within its track when the goal is exceeded, and the remaining calories turn red
+- **Breakdowns:** calorie totals by meal type and overall macronutrient totals
+- **New day:** clears all meals and keeps the goal
+- **Responsive layout:** mobile-first CSS with no UI framework
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React 19 (function components and the `useState` hook)
+- JavaScript (ES6+)
+- CSS3 (Grid, Flexbox, custom properties, media queries)
+- Create React App
 
-### `npm test`
+## How It Works
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app stores only two pieces of shared state, both in `App`: the daily `goal` and the `meals` array. Totals, percentages, and breakdowns are calculated from those values on every render, so they cannot get out of sync.
 
-### `npm run build`
+```text
+App (goal, meals)
+├── MealForm        adds a meal through a callback prop
+├── QuickAdd        adds a predefined meal through the same callback
+├── MealList        renders the meals
+│   └── MealItem    displays one meal and requests its deletion
+└── CalorieCounter  calculates and displays the summary
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Each form field is a controlled input. State updates are immutable, using the spread operator to add meals and `filter` to remove them.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You need [Node.js](https://nodejs.org/) and npm installed.
 
-### `npm run eject`
+```bash
+git clone https://github.com/adelhokulic/brojac-kalorija.git
+cd brojac-kalorija
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app opens at [http://localhost:3000](http://localhost:3000).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To create a production build, run `npm run build`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```text
+src/
+├── components/
+│   ├── CalorieCounter.js
+│   ├── MealForm.js
+│   ├── MealItem.js
+│   ├── MealList.js
+│   └── QuickAdd.js
+├── App.css
+└── App.js
+```
 
-## Learn More
+## Roadmap
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Data currently lives in memory, so it resets when the page reloads. Planned improvements:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Save meals and the daily goal with `localStorage`
+- Add automated tests
+- Migrate the project to TypeScript
 
-### Code Splitting
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Adel Hokulic** · [GitHub](https://github.com/adelhokulic)
