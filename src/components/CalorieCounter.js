@@ -1,3 +1,5 @@
+import { Card, Col, ProgressBar, Row } from "react-bootstrap";
+
 const CalorieCounter = ({ goal, meals }) => {
 	const calorieSum = meals.reduce((sum, meal) => sum + meal.calories, 0);
 	const proteinSum = Math.round(
@@ -14,32 +16,95 @@ const CalorieCounter = ({ goal, meals }) => {
 			.reduce((sum, meal) => sum + meal.calories, 0);
 	};
 	return (
-		<>
-			<h2 className="section-title">CalorieCounter</h2>
-			<p className="stat">Eaten: {calorieSum} kcal</p>
-			<p
-				className="stat stat-remaining"
-				style={{ color: calorieSum > goal ? "red" : "black" }}
-			>
-				Remaining: {remaining} kcal
-			</p>
-			<p className="stat">Percent: {percent} %</p>
-			<div className="progress">
-				<div className="progress-fill" style={{ width: `${barWidth}%` }}></div>
-			</div>
-			<div className="type-totals macro-totals">
-				<p className="type-total">Protein: {proteinSum} g</p>
-				<p className="type-total">Carbs: {carbsSum} g</p>
-				<p className="type-total">Fat: {fatSum} g</p>
-			</div>
+		<Card className="app-card">
+			<Card.Body>
+				<Card.Title as="h2" className="card-heading">
+					Today's summary
+				</Card.Title>
 
-			<div className="type-totals">
-				<p className="type-total">Breakfast: {sumByType("Breakfast")} kcal</p>
-				<p className="type-total">Lunch: {sumByType("Lunch")} kcal</p>
-				<p className="type-total">Dinner: {sumByType("Dinner")} kcal</p>
-				<p className="type-total">Snack: {sumByType("Snack")} kcal</p>
-			</div>
-		</>
+				<Row className="g-2 mb-3">
+					<Col xs={4}>
+						<div className="stat-tile">
+							<p className="stat-label">Eaten</p>
+							<p className="stat-value">{calorieSum}</p>
+							<p className="stat-unit">kcal</p>
+						</div>
+					</Col>
+					<Col xs={4}>
+						<div className="stat-tile">
+							<p className="stat-label">Remaining</p>
+							<p
+								className="stat-value"
+								style={{ color: calorieSum > goal ? "red" : "black" }}
+							>
+								{remaining}
+							</p>
+							<p className="stat-unit">kcal</p>
+						</div>
+					</Col>
+					<Col xs={4}>
+						<div className="stat-tile">
+							<p className="stat-label">Percent</p>
+							<p className="stat-value">{percent}%</p>
+							<p className="stat-unit">of goal</p>
+						</div>
+					</Col>
+				</Row>
+
+				<ProgressBar
+					now={barWidth}
+					label={`${percent}%`}
+					visuallyHidden
+					striped
+					animated
+					variant="primary"
+					className="calorie-progress mb-4"
+				/>
+
+				<p className="section-label">Macronutrients</p>
+				<Row className="g-2 mb-3">
+					<Col xs={4}>
+						<div className="mini-tile">
+							Protein <strong>{proteinSum} g</strong>
+						</div>
+					</Col>
+					<Col xs={4}>
+						<div className="mini-tile">
+							Carbs <strong>{carbsSum} g</strong>
+						</div>
+					</Col>
+					<Col xs={4}>
+						<div className="mini-tile">
+							Fat <strong>{fatSum} g</strong>
+						</div>
+					</Col>
+				</Row>
+
+				<p className="section-label">By meal type</p>
+				<Row className="g-2">
+					<Col xs={6} md={3}>
+						<div className="mini-tile">
+							Breakfast <strong>{sumByType("Breakfast")} kcal</strong>
+						</div>
+					</Col>
+					<Col xs={6} md={3}>
+						<div className="mini-tile">
+							Lunch <strong>{sumByType("Lunch")} kcal</strong>
+						</div>
+					</Col>
+					<Col xs={6} md={3}>
+						<div className="mini-tile">
+							Dinner <strong>{sumByType("Dinner")} kcal</strong>
+						</div>
+					</Col>
+					<Col xs={6} md={3}>
+						<div className="mini-tile">
+							Snack <strong>{sumByType("Snack")} kcal</strong>
+						</div>
+					</Col>
+				</Row>
+			</Card.Body>
+		</Card>
 	);
 };
 

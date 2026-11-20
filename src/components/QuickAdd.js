@@ -1,3 +1,5 @@
+import { Button, Card } from "react-bootstrap";
+
 const QuickAdd = ({ onAddMeal }) => {
 	const foods = [
 		{
@@ -88,19 +90,28 @@ const QuickAdd = ({ onAddMeal }) => {
 	};
 
 	return (
-		<div className="quick-add">
-			{foods.map((food) => {
-				return (
-					<button
-						className="button button-quick"
-						key={food.name}
-						onClick={() => handleQuickAdd(food)}
-					>
-						{food.name} {food.calories} kcal
-					</button>
-				);
-			})}
-		</div>
+		<Card className="app-card">
+			<Card.Body>
+				<Card.Title as="h2" className="section-label">
+					Quick add
+				</Card.Title>
+				<div className="quick-add">
+					{foods.map((food) => {
+						return (
+							<Button
+								variant="outline-secondary"
+								size="sm"
+								className="quick-btn"
+								key={food.name}
+								onClick={() => handleQuickAdd(food)}
+							>
+								{food.name} <span className="quick-kcal">{food.calories} kcal</span>
+							</Button>
+						);
+					})}
+				</div>
+			</Card.Body>
+		</Card>
 	);
 };
 

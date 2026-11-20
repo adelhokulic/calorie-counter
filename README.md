@@ -14,13 +14,14 @@ Built as a project in the ITMentorstva frontend mentorship program.
 - **Progress bar:** stays within its track when the goal is exceeded, and the remaining calories turn red
 - **Breakdowns:** calorie totals by meal type and overall macronutrient totals
 - **New day:** clears all meals and keeps the goal
-- **Responsive layout:** mobile-first CSS with no UI framework
+- **Responsive dashboard:** a two-column layout on desktop that stacks on mobile, with subtle animations
 
 ## Tech Stack
 
 - React 19 (function components and the `useState` hook)
+- React Bootstrap and Bootstrap 5 (layout grid, cards, forms, progress bar)
 - JavaScript (ES6+)
-- CSS3 (Grid, Flexbox, custom properties, media queries)
+- CSS3 (custom properties, transitions, keyframe animations)
 - Create React App
 
 ## How It Works
